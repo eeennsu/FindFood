@@ -1,0 +1,452 @@
+$foodRadius: 2rem;
+
+#foodBody{
+  background: #FFB937;  
+}
+
+#topBanner-food{
+  background-image: url('../images/food/none_copyright/findBg.jpg');
+  height: 50vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;         //고정 효과 연출가능
+  background-size: cover;
+  background-origin: border-box;
+
+  .section-content{
+    padding: 145px 0;
+   
+    .container{
+      border-radius: 35px;
+      transition: 0.4s ease;
+      
+      &:hover{
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+    }   
+  }
+}
+
+// placeholder selector (%를 앞에 쓰고 이름을 붙이고 괄호에 스타일링을 쓰면, 변수의 기능을 한다)
+%mapDiv{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+#letsGoFind{
+  #selectFood{
+    .tabs{
+      .tabs__contents{   
+        width: 100%;
+        .tabs__content{
+          .line{
+            margin-bottom: 35px;         
+            border-bottom: 3px solid rgba($color: #494141, $alpha: 0.3);
+            padding-bottom: 10px;
+            
+            .card{
+              width: 100%;                 
+              border-radius: $foodRadius;
+
+               a{
+                text-decoration: none;
+                img{
+                  width: 100%;
+                  height: 240px;   
+                  border-radius: $foodRadius;       
+                }
+
+                transition: 0.5s ease;             
+                border-radius: $foodRadius;
+
+                &:hover{
+                  box-shadow: $content-shadow;
+                }
+              }  
+              
+              .food-name{
+                font-family: 'Gowun Dodum', sans-serif;
+                font-size: 20px;
+                font-weight: 800;
+                text-align: center;
+                color:rgb(141, 98, 4);  
+              }        
+
+              .fa-solid{
+                background-color: white;
+
+                transition: 0.1s ease;             
+                border-radius: 10px;
+
+                &:active{
+                  background-color: #afc3ee;
+                }
+              }
+            }          
+          }
+        }       
+      }
+    }
+  }
+}
+
+#section-roulette{
+  .section-content{
+    padding-bottom: 0;
+    #mini-section{
+      background:#ffd194;
+      
+      border: 20px solid whitesmoke;
+      border-radius: 3rem;
+    }
+  
+    #mobile-controls{
+      button{
+        padding: 0 2rem;
+        border-radius: 1rem;
+      }
+    }
+  } 
+}
+
+
+
+#contactMap{  
+  @extend %mapDiv;
+  height: auto;
+  padding-top: 55px;
+
+  .map_wrap{
+    width: 90%;
+    margin-left: 10rem;
+    height: 700px;
+
+    .map_wrap * {
+      margin: 0;
+      padding: 0;
+      font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;
+      font-size: 12px;
+    }
+
+     a,
+     a:hover,
+     a:active {
+      color: #000;
+      text-decoration: none;
+    }     
+
+    .bg_white {
+      background: #fff;
+    }
+
+    #map{    
+      @extend %mapDiv;
+      border-radius: 5rem;
+    }
+
+    #menu_wrap {
+      position: absolute;
+      height: 600px;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 280px;
+      margin-top: 165px;
+      margin-left: 30px;
+      padding: 5px;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.75);
+      z-index: 1;
+      font-size: 12px;
+      border-radius: 10px;
+
+      hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 2px solid #5F5F5F;
+        margin: 3px 0;
+      }
+  
+      .option {
+        //text-align: center;
+        margin-left: 14px;
+      }
+  
+      .option p {
+        margin: 10px 0;
+      }
+  
+      .option button {
+        margin-left: 5px;
+      }
+    }
+  }
+}
+
+.toggle{
+  font-size: 11px;
+}
+
+#closeSearch{
+  position: absolute;
+}
+
+#plus_wrap{
+  padding: 10px;
+  border-radius: 3rem;
+  position: absolute;
+  margin-top: 40px;
+  margin-left: 1rem;
+}
+
+
+@include mediaSm{
+  #letsGoFind{    
+    margin-top: 35%;
+    #selectFood{
+      .tabs{
+        .tabs__contents{    
+          margin: 0;
+          padding: 5%;
+
+          .tabs__content{
+            .row{
+              .col-md-2,.col-6{            
+                padding: 0 2px 10px;
+  
+                .card{
+                  width: 100%;   
+                  img{
+                    width: 100%;
+                    height: 150px;  
+                  }          
+                }
+              } 
+              
+              .food-class{
+                border-right: none;
+              }
+            }  
+          }                         
+        }
+      }
+    }
+  }
+
+  #contactMap{  
+    #map{
+      margin: 0px;
+      height: 580px;  
+      width: 100%;
+      margin-left: -80px;
+    }
+    
+    #menu_wrap {
+      position: absolute;
+      padding: 5px;
+      overflow-y: auto;
+      background: rgba(255, 255, 255, 0.75);
+      z-index: 1;
+      font-size: 10px;
+      border-radius: 10px;   
+    }   
+    
+    #plus_wrap{
+      padding: 10px;
+      border-radius: 3rem;
+      position: absolute;
+      z-index: 2;
+    }
+  }
+}
+
+
+
+// gradient: https://webgradients.com
+@import url("https://fonts.googleapis.com/css?family=Lato:400,300");
+
+@mixin sp-layout {
+  @media screen and (max-width: 750px) {
+    @content;
+  }
+}
+
+.tabs {
+  --tab-links-height: 80px;
+  --tab-links-bg: linear-gradient(135deg, #e5eaf1 0%, #b9c5d8 100%);
+  --tab-links-overlay: linear-gradient(
+    135deg,
+    #2cd8d5 0%,
+    #6b8dd6 48%,
+    #8e37d7 100%
+  );
+ 
+  --tab-link-bg: linear-gradient(
+    90deg,
+    transparent 70%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  width: 110%;
+  max-width: 120%;
+  min-width: 300px;
+  font-family: sans-serif;
+
+  .tabs__links {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--tab-links-height);
+    background: var(--tab-links-bg);
+    list-style-type: none;
+
+    @include sp-layout {
+      height: calc(var(--tab-links-height) / 2);
+    }
+
+    li {
+      flex: 1;
+
+      .tabs__link {
+        all: unset;
+        position: relative;
+        height: var(--tab-links-height);
+        width: 100%;
+        background: var(--tab-link-bg);
+        cursor: pointer;
+        overflow: hidden;
+        transition: 0.3s;
+
+        @include sp-layout {
+          height: calc(var(--tab-links-height) / 2);
+          font-size: 12px;
+        }
+
+        // overlay
+        &::before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          z-index: 2;
+          width: 100%;
+          height: 100%;
+          background: var(--tab-links-overlay);
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: 0.3s ease-in-out;
+        }
+
+        .tabs__link__text {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          opacity: 0.6;
+          transition: 0.5s;
+
+          // big-text
+          &::before {
+            position: absolute;
+            content: attr(data-text);
+            top: 160%;
+            z-index: -1;
+            font-size: 40px;
+            font-weight: 600;
+            color: white;
+            opacity: 0.1;
+            transition: 1.2s ease-out;
+
+            @include sp-layout {
+              display: none;
+            }
+          }
+        }
+
+        &:hover {
+          &::before {
+            transform: scaleY(1);
+          }
+
+          .tabs__link__text {
+            color: white;
+            opacity: 1;
+
+            &::before {
+              transform: translateY(-300%);
+            }
+          }
+        }
+
+        &.active {
+          transform: scaleY(1.4);
+          background: white;
+
+          &::before {
+            transform: scaleY(0.05);
+          }
+
+          .tabs__link__text {
+            transform: scaleY(0.714);
+          }
+        }
+
+        &.active .tabs__link__text,
+        &.active:hover .tabs__link__text {
+          background: var(--tab-links-overlay);
+          background-clip: text;
+          color: transparent;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .tabs__contents {
+    position: relative;
+    margin-top: 0;
+    padding: 15px 0;
+    margin-right: 100px;    
+    background: white;
+    list-style-type: none;
+    transition: 1s;    
+
+    // bottom-line
+    &::after {
+      position: absolute;
+      content: "";
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 5px;
+      background: var(--tab-links-overlay);
+    }
+
+    .tabs__content {
+      display: none;
+      min-height: 200px;
+      font-weight: 300;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(30%);
+      animation: fadeIn 0.6s forwards;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

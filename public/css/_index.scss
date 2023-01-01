@@ -1,0 +1,252 @@
+// @import '../../../node_modules/bootstrap/scss/variables';         // 파일이 없음, 컴파일은 정상...
+// @import '../../node_modules/bootstrap/scss/variables';            // 파일은 있음, 컴파일은 오류...        무엇이 틀린건지?
+
+.bg {
+  position: relative;
+  height: 100vh;
+  background: url('../images/food/none_copyright/homeBg5.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  padding: 0;
+  margin:0;
+
+  &::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 115vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(59, 58, 58, 0) 10%,
+      rgba(39, 38, 38, 0.4) 25%,
+      rgba(34, 32, 32, 0.6) 50%,
+      rgba(32, 31, 31, 0.8) 75%,
+      rgb(0, 0, 0) 100%
+    );
+    z-index: -1;
+  }
+
+  #main-home{
+    .mouseCont{
+      display: flex;
+      justify-content: center;
+      color: #fff;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'NEXONLv1Gothic';
+      cursor: none;
+    }
+
+    .cursor {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: url('../images/food/none_copyright/homeBg5.jpg') center center;
+      background-attachment: fixed;
+      background-size: cover;
+      border: 5px solid #fff;
+      overflow: hidden;
+      z-index: -1;
+    }
+  }
+}
+
+.welcome-title{
+  font-family: 'Dancing Script', sans-serif;
+  color: rgb(92, 212, 182); 
+ }
+
+ 
+// 모바일의 section-home, 잠시 보류
+ #mobile-home{
+   background-image: url('../images/food/none_copyright/homeBg5.jpg');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 75vh;
+   position: relative; 
+   
+   .overlay{
+     position: absolute;
+     height: 100%;
+     width: 100%;
+     left: 00;
+     top: 00;
+     background-color: rgba(0, 0, 0, 0.2);
+     
+     .divider-main{   
+       width: 100%;
+       margin-top: 2rem;
+       margin-bottom: 2rem;
+       border-top: 4px solid #fff;      
+     }  
+     
+     .itro{
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 35px;
+      padding: 1rem;
+      color: rgb(235, 207, 171);
+     }   
+   } 
+ }
+   
+/* Carousel 백그라운드 있는 버전  */
+#recommend-section{
+  background: #FFEFBA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  #carousel-front-slides{ 
+
+    margin-top: 175px;
+    .carousel-indicators{
+      button{
+        background-color: rgba(0, 0, 0, 0.6);
+        height: 6px;
+        width: 50px;
+      }
+    }
+    
+    .carousel-item{
+      .outer-slide{
+        filter: blur(10px);  
+        -webkit-filter: blur(10px);  
+      }
+  
+      .carousel-caption{
+        figure{
+          .inner-slide{
+  
+            border-radius: 4rem;
+            right: 11%;
+            border: 3px solid rgb(243, 234, 193);   
+            width: 425px;
+            height: 300px;
+            margin-bottom: 5rem;
+            // hover effect          
+            -webkit-transform: scale(1.5);
+            transform: scale(0.85);
+            -webkit-transition: .3s ease-in-out;
+            transition: .3s ease-in-out;
+         
+            &:hover{            
+              transform: scale(1.05);              
+            }
+          }
+        }
+         
+        .foodName{
+          font-family: 'Gamja Flower', sans-serf;  
+          font-size: 3rem;
+          text-shadow: 3px 3px 3px grey;
+        }
+      }
+    } 
+  
+    button{
+      .arrows{
+        width: 2.5rem;
+        height: 2.5rem;
+        padding: 1.6rem;
+        transition: 0.4s all ease-out;
+        border: 3px solid grey;  
+        border-radius: 1rem;
+        background-color: rgba(0, 0, 0, 0.5);
+  
+        &:hover{
+          border: 3px solid black;  
+          background-color: rgba(0, 0, 0, 1);
+        }
+      }
+    }
+  }
+}
+
+@-webkit-keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+@keyframes shine {
+  100% {
+    left: 125%;
+  }
+}
+
+/* Front info section*/
+#ranFood-info{
+  background-image: url('../images/tile.jpg');
+  background-repeat: repeat;
+
+  .section-content{   
+    h2{
+      font-family: 'Poor Story', sans-serif !important;
+      font-size: 2.8rem;
+    }
+  }  
+}
+
+
+
+
+// 767px이하에서의 css환경
+@include mediaSm{
+  #recommend-section{
+    #carousel-front-slides{
+      .carousel-item{  
+  
+        .outer-slide{
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+          filter: blur(0px);  
+          -webkit-filter: blur(0px);     
+        }
+      }
+  
+      button{
+        .arrows{
+          padding: 1rem;
+        }
+      }
+    }
+  }
+}
+
+
+@include mediaSm{
+  #section-home .welcome{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@include mediaSm{
+  .bg{
+    position: relative;
+    height: 50vh;
+    background: url('../images/food/none_copyright/homeBg4.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 50vh;
+      background-color: rgba(5, 36, 70, 0.5);
+      z-index: -1;
+    }
+  }  
+}

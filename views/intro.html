@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindFood | Intro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- 애니메이션_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css" integrity="sha512-b42SanD3pNHoihKwgABd18JUZ2g9j423/frxIP5/gtYgfBz/0nDHGdY/3hi+3JwhSckM3JLklQ/T6tJmV7mZEw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Animate.css 애니메이션 cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- light box2_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/main.css" />
+  <link rel="shortcut icon" href="#">
+  <!-- React Link-->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="intro">
+
+
+
+  <!-- scroolbar btn -->
+  <a id="scrolltoTop" class="shadow-xl">Top</a>
+
+
+  
+  
+  <nav id="primaryNavbar" class="navbar navbar-expand-lg navbar-transparent fixed-top rgba-black-light">
+    <div class="container-xxl">           
+      <a href="images/ourLogo2_large.png" data-lightbox="LightBox" data-title="FindFood" data-alt="FindFoodLogo">
+        <img id="ourLogo" src="images/ourLogo2.png" class="rounded" alt="FindFoodLogo" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This illustration was made by our member Jiho Lim. Would you like to click? ">
+      </a>
+      <a class="navbar-brand" href="/">
+        <span class="text-white mx-2 mx-lg-4 our-title">Find Food</span>
+      </a>
+      
+   
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <nav id="offcanvasRight" class="offcanvas offcanvas-end d-block d-lg-none" data-bs-scroll="true" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvasRightLabel">Menu</h5>
+         
+          <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-unstyled mobile-menu">
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/" class="text-decoration-none link-dark">Home</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/intro" class="text-decoration-none link-dark active">Intro</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/user/login" class="text-decoration-none link-dark">Login</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/foods" class="text-decoration-none link-dark">Foods</a>
+            </li>          
+            <li class="my-3 ps-1 border-bottom">
+              <span class="text-decoration-none link-dark have-subMenu">User</span>
+              <ul class="list-unstyled ps-4">
+                <li class="signUpLi">
+                  <a href="/page/signUp" class="text-decoration-none">Sign Up</a>
+                </li>
+                <li class="logoutLi">
+                  <a href="/user/logout_process" class="btn_logout text-decoration-none">Logout</a>
+                </li>
+                <li class="myPageLi">                  
+                  <a class="text-decoration-none" href="/user/myPage">My Page</a>                 
+                </li>  
+              </ul>
+            </li>
+          </ul>
+        </div>   
+      </nav>
+      <div class="collapse navbar-collapse m-0 mt-lg-5" id="navPrimaryContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">            
+            <a class="nav-link basic" href="/">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-house-chimney fa-2x"></i>
+                <p>Home</p>
+              </div>
+            </a>           
+          </li>
+          <li class="nav-item">          
+            <a class="nav-link basic active" aria-current="page" href="/page/intro">
+              <div class="row justify-content-center">
+                <i class="fa fa-circle-info fa-2x active"></i>
+                <p>Intro</p>
+                <hr class="nav-divider">
+              </div>               
+            </a>           
+          </li>
+          <li class="nav-item">         
+            <a class="nav-link basic" href="/user/login" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-user-check fa-2x"></i>
+                <p>Login</p>
+              </div>
+            </a>                      
+          </li>        
+          <li class="nav-item">            
+            <a class="nav-link basic" href="/page/foods" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-utensils fa-2x "></i>
+                <p>Foods</p>
+              </div>
+            </a>      
+          </li>        
+          <li class="nav-item dropdown">            
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-head-side-virus fa-2x"></i>
+                <p>User</p>
+              </div>
+            </a>           
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="signUpLi">
+                <a class="dropdown-item" href="/page/signUp">                    
+                  <i class="fa-solid fa-user-plus me-1"></i>
+                  <span>Sign Up</span>              
+                </a>
+              </li>
+              <li class="logoutLi">
+                <a class="btn_logout dropdown-item" href="/user/logout_process">         <!-- 로그아웃 기능 -->
+                  <i class="fa-solid fa-right-from-bracket me-1"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+              <li class="myPageLi">               
+                <a class="dropdown-item" href="/user/myPage">
+                  <i class="fa-solid fa-user-gear me-1"></i>
+                  <span>My Page</span>
+                </a>          
+              </li>
+            </ul>   
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>   
+
+  <script src="/js/back/navbarStateUI.js"></script>
+
+  <!-- Top Banner -->
+  <section id="topBanner-intro" class="banner d-flex justify-content-center align-items-center" style="background-image: url('images/food/none_copyright/introBg.jpg');">
+    <div class="section-content w-75">
+      <div class="container fw-bold">
+        <h1 class="display-4 fs-1 text-white text-center text-lg-start">What is the <span class="our-title"> <br class="d-block d-lg-none">Find Food? </span></h1>
+        <p class="lead info-text fs-3 d-lg-block d-none"><span class="our-title fs-2">Find Food</span>에 오신 것을 환영합니다!</p>
+        <div class="font_nanum-pen-script detail text-start d-lg-none b-block" id="mobile-info">
+          저희 웹사이트를 이용하시기 전에 유용한 정보를 맛보고, 음미하세요!<br> 이용하신 뒤, 이 웹사이트를 친구들과 지인에게 공유해주세요! 
+        </div>
+        <div class="d-lg-block d-none">
+          <div id="banner-collapse" class="collapse">
+            <br>
+            <hr class="hr-white lead">
+            <div class="row justify-content-around font_nanum-pen-script"> 
+              <div class="col-6 info-text fs-2 nanum-pen-script detail text-center">
+                저희 웹사이트를 이용하시기 전에 유용한 정보를 맛보고, 음미하세요!<br> 이용하신 뒤, 이 웹사이트를 친구들과 지인에게 공유해주세요! 
+              </div>
+              <div class="col-6 info-text fs-2 nanum-pen-script detail text-center">
+                Taste and savor useful information before using our website!
+                After using it, please share this website with your friends and acquaintances!
+              </div>
+            </div>     
+          </div>
+        </div>      
+        <button class="btn btn-secondary d-none d-lg-block" data-bs-target="#banner-collapse" type="button" data-bs-toggle="collapse">explain more</button>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- introduce our effect -->
+  <section id="intro-effect" style="background-image: url('images/tile.jpg');">
+    <div class="section-content">
+      <div class="container my-3 py-3 my-lg-5 py-lg-5"> 
+        <div class="img">
+          <div class="row">
+            <div class="col-lg-6">
+              <img src="images/food/none_copyright/think.jpg" alt="think" class="img-fluid shadow-xl wow fadeInLeft">
+              <hr class="mt-3">
+              <h1 class="font-weight-bold mt-4 mt-lg-3 font_nanum-pen-script">무엇을 먹을지 고민하는 것에 대해 아직도 못 고르신 당신</h1>
+              <p class="info-sentence fs-5">어떤 음식을 골라야할지, 주변에 어떤 음식점들이 당신을 기다리는지 모르신다구요? 걱정하지 마세요! 그럴 때마다 접속하시면 안내해드립니다! 최상의 추천을 보장해드립니다. 더 이상 고민하지 마세요!</p>
+            </div>
+            <div class="col-lg-6 wow fadeInRight mt-5 mt-lg-3">
+              <h1 class="font-weight-bold font_nanum-pen-script">이제 같은 음식만, 같은 추천만 받는 것에 질리셨나요?</h1>
+              <p class="info-sentence fs-5">인류의 역사를 통틀어 생존의 기본의 되는 3가지 의,식,주 중에 가장 중요한 것은 무엇이라고 생각하나요? 바로 음식입니다! 더 이상 여러분의 끼니를 대충, 먹던 것만으로 해결하지말고 <span class="our-title realSmall">Find Food</span> 하세요!</p>
+              <hr class="mb-3">
+              <img src="images/food/none_copyright/apple.jpg" alt="apple" class="img-fluid shadow-xl">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- About Our Features-->
+  <section id="aboutOurFeatures">
+    <div class="section-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 wow fadeInDown">
+            <h3 class="my-2 my-lg-5 text-center text-lg-start">Features  Of <span class="our-title fs-1"> FindFood</span></h3>
+            <nav class="mt-lg-0 mt-3">
+              <div class="nav nav-tabs justify-content-center justify-content-lg-start" id="nav-tab" role="tablist">
+                <button class="nav-link active" id="nav-team-tab" data-bs-toggle="tab" data-bs-target="#nav-mapImage" type="button" role="tab" aria-controls="nav-mapImage" aria-selected="true">Naver Map API</button>
+                <button class="nav-link" id="nav-photos-tab" data-bs-toggle="tab" data-bs-target="#nav-photos" type="button" role="tab" aria-controls="nav-photos" aria-selected="false">Random Rulet</button>
+              </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+              <div class="tab-pane fade show active" id="nav-mapImage" role="tabpanel" aria-labelledby="nav-mapImage-tab">
+                <div class="image-box">
+                  <div class="row row-cols-2">
+                    <div class="col">
+                      <img src="images/food/none_copyright/find.jpg" alt="findImage-bg" id="findBg" class="rounded-3 img-fluid shadow-xl">
+                    </div>
+                    <div class="col">
+                      <img src="images/food/none_copyright/gps.jpg" alt="gpsImage-bg" id="gpsBg" class="rounded-3 img-fluid shadow-xl">
+                    </div>
+                    <div class="col">
+                      <img src="images/food/none_copyright/mapBg.jpg" alt="gpsImage-bg" id="mapBg" class="rounded-3 img-fluid shadow-xl"> 
+                    </div>
+                    <div class="col">
+                      <img src= "images/food/none_copyright/restaurants.jpg" alt="resImage-bg" id="resBg" class="rounded-3 img-fluid shadow-xl">  
+                    </div>
+                  </div>
+               </div>
+                <p class="info-sentence mt-5 mt-lg-3"> 당신의 음식 취향을 맞춰 현재 위치를 기반으로 근방에 있는 맛집을 소개해드립니다! FindFood는 대표적으로 인기있는 한식, 중식, 일식, 양식 카테고리의 대표 음식들을 추려 여러분의 다양한 취향에 맞는 음식들을 준비하였습니다! 궁금하시면 <a href="/page/foods">이곳</a>을 클릭하세요!</p>
+              </div>
+              <div class="tab-pane" id="nav-photos" role="tabpanel" aria-labelledby="nav-photos-tab">
+                <div class="my-5">
+                  <div class="row">
+                    <img id="dice" src="images/food/none_copyright/dice.jpg" alt="주사위" class="img-fluid">     
+                    <p class="info-sentence mt-5 mt-lg-3"> 그래도 고르기 어려우시다구요? 룰렛을 돌려보세요! 다양한 타입의 음식들이 여러분을 기다리고 있습니다. 와서 돌리기만 하세요 여러분이 드시고 싶은 음식들을 추가하여 돌리고 확인하세요!</p>             
+                  </div>
+                </div>
+              </div>             
+            </div>
+          </div>
+          <div class="col-lg-5 wow fadeInDown" data-wow-delay="1s">
+            <div class="faq my-2 my-lg-5">
+              <h3 class="mb-4 text-center text-lg-start">FAQ</h3>
+              <div id="faq">
+                
+              </div>              
+              <br>             
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Brand -->
+  <section id="brand-history" style="background-image: url(images/brand.jpg);">
+    <div class="section-content py-5">
+      <div class="container">
+        <div class="row brand-content rgba-black-light p-3 wow bounceIn ">
+          <div class="col-8 offset-2 text-center text-white my-3">
+            <h3>History Of <br class="d-block d-lg-none"><span class="our-title">Find Food</span> </h3>
+            <p class="lead my-5">Find Food는 대학교 캡스톤 디자인의 웹 분야 과제로 제작되었습니다. 4명의 조원이 팀플레이를 통해 맡은 분야를 바탕으로 최상의 결과물을 완성하였습니다!</p>
+          </div>
+          <div class="col-lg-6 text-white mb-5 mb-lg-0">
+            <h4 class="mb-4">Brief History</h4>
+            <p>It was produced by a combination of three first-year students and one second-year student at Myongji College. It consisted of 1 front-end, 1 back-end, 1 image designer, and 1 roulette designer.</p>
+          </div>
+          <div class="col-lg-6 text-white">
+            <h4 class="mb-4">My Career</h4>
+            <p>As a front creator, I studied front web development for about 4 months and was in charge of web page design production.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer id="footer"> 
+  </footer>  
+
+
+  
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- light box2_cdnjs 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- 애니메이션 다양한 효과 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- faq react -->
+  <script type="text/babel" src="js/reactComponents/faq.jsx"></script>
+  <!-- 푸터 react -->
+  <script src="js/reactComponents/footer.jsx" type="text/babel"></script>
+  <!-- custom js 링크-->
+  <script type="module" src="js/main.js"></script>  
+</body>
+</html>

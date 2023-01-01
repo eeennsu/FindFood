@@ -1,0 +1,295 @@
+// 프로그램의 전체 설정을 관리하는 scss파일이다.
+// 언더바가 붙은 scss파일은 컴파일링에서 제외된다.
+ 
+// variables
+$content-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+$shadow-xl: 0 1rem 2.5rem -0.8rem rgba(0, 0, 0, 0.56), 0 0.25rem 1.5rem rgba(0, 0, 0, 0.12), 0 0.5rem 0.75rem -0.3rem rgba(0, 0, 0, 0.2);   
+$brand-shadow:  0 16px 24px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2);
+$mycolor: rgb(96, 141, 163);
+
+$defaultDuration: .3s;
+$primaryColour: #ececec;
+$secondaryColour: #666;
+$shadowColour: rgba(0, 0, 0, .6);
+$tipWidth: 10px;  //the width of the speech bubble tip
+$tipHeight: 10px; //the height of the speech bubble tip
+$tipColour: $primaryColour;
+$curlWidth: 25px;
+$curlHeight: 25px;
+
+// Curl colours
+$revealAreaColour: white;     // reveal area behind the curl
+$curlLineColour: #aaa;        // crease line
+$curlTransitionColour: #ccc;  // colour transitioning from crease line to final colour
+$curlLastColour: white;       // final colour of the back of the curl
+
+
+
+@keyframes hover-shadow {
+  0% {
+    transform: translateY(6px);
+    opacity: .4;
+  }
+
+  50% {
+    transform: translateY(3px);
+    opacity: 1;
+  }
+
+
+  100% {
+    transform: translateY(6px);
+    opacity: .4;
+  }
+}
+
+
+
+/* css용 함수 */
+// Media Query Mixins
+@mixin mediaSm {
+  @media screen and (max-width: 767px){
+    @content;       //어떤 컨텐츠가 들어오는 구역 (함수의 내부)
+  }
+}
+
+
+// 아래 3개는 hover용 디자인 함수
+@mixin hideTapHighlightColor() {
+  //Prevent highlight colour when element is tapped
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+@mixin hardwareAccel() {
+  //Improve performance on mobile/tablet devices
+  transform: translateZ(0);
+}
+
+@mixin improveAntiAlias() {
+  //Improve aliasing on mobile/tablet devices
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+
+// 구글 폰트링크
+@import url('https://fonts.googleapis.com/css2?family=Alkalami&family=Bungee+Spice&family=Dancing+Script&family=Edu+TAS+Beginner:wght@500;600&family=Gamja+Flower&family=Gowun+Batang&family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@500&family=Lobster&family=Montserrat:wght@100&family=Nanum+Gothic+Coding&family=Nanum+Pen+Script&family=Nunito:ital,wght@1,300&family=Open+Sans:wght@300&family=Poor+Story&family=Roboto:wght@100;400;500&family=Shadows+Into+Light&display=swap');
+// 폰트 설정
+.font_nanum-gothic-coding{
+  font-family: 'Nanum Gothic Coding', monospace;
+}
+
+.font_gamja-Flower{
+  font-family: 'Gamja Flower', sans-serif;
+}
+
+.font_poor-story{
+  font-family: 'Poor Story', sans-serif;
+}
+
+.font_nanum-pen-script{
+  font-family: 'Nanum Pen Script', sans-serif;
+}
+
+.font_dancing-script{
+  font-family: 'Dancing Script', sans-serif;
+}
+
+.font_nuntio{
+  font-family: 'Nunito', sans-serif;
+}
+
+.font_Gowun_Dodum{
+  font-family: 'Gowun Dodum', sans-serif;
+}
+
+
+body,h1,h2,h3,h4,h5,h6,p,span,small,ul,li,input,select,textarea,table,th,td{
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@include mediaSm{
+  img{
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+
+.rgba-black-light{
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.rgba-black-strong{
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.rgba-blue-grey-slight{
+  background-color: rgba(101, 78, 204, 0.1);
+}
+
+.rgba-blue-grey-light{
+  background-color: rgba(101, 78, 204, 0.3);
+}
+
+.rgba-blue-grey-strong{
+  background-color: rgba(101, 78, 204, 0.7);
+}
+
+.rgba-orange-slight{
+  background-color: rgba(255, 152, 0, 0.1);
+}
+
+.rgba-white-light{
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+//큰 그림자
+.shadow-xl{    // box-shadow: 수평 수직 blur spread값 색상
+  box-shadow: $shadow-xl;
+}
+
+.section-content{
+  padding: 4rem 0;
+}
+
+.section-content-footer{
+  padding: 1rem 0;
+}
+
+.section-content-foods{
+  padding: 10rem 0;
+}
+
+.section-content-signUp{
+  padding: 10rem 0 2rem;
+}
+
+
+.divider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  margin-bottom: 1.6rem;
+  
+  //뒤와 앞을 지정하고 border효과를 내준다.
+  &:before, &:after{
+    content: '';
+    height: 0.25rem;
+    background: rgb(139, 135, 135);
+    flex: 1;     //각각의 폭을 확장하는 결과가 나온다.
+  }
+
+  &:before{
+    margin-right: 0.5rem;
+  }
+
+  &:after{
+    margin-left: 0.5rem;
+  }
+}
+
+.bg-purple{
+  background-color: purple;
+}
+
+.text-purple{
+  color: purple;
+}
+
+
+hr{
+  &.hr-white{
+    border-top: 4px solid rgb(42, 90, 99);
+  }
+}
+
+.form-control{
+  border-radius: 16px;
+  border: 2px solid #a4a7af;
+  &:focus{
+    border: 2px solid #4ea1ee;
+    box-shadow: 2px 3px 3px 2px #dfd4d4;
+  }
+}
+
+::placeholder{
+  font-size: 0.85rem;
+  opacity: 0.5;
+}
+
+.main{
+  background: rgb(243, 249, 250);
+  // z-index: 3;
+
+  &-raised-square, 
+  &-raised-rounded{
+    margin: -60px 25px 0;
+    box-shadow: $content-shadow;
+  }
+
+  &-raised-rounded{
+    border-radius: 6px;
+  }
+}
+
+blockquote{
+  border-left: 0.5rem solid red;
+  padding-left: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Title */
+.our-title{
+  font-family: 'Edu TAS Beginner', 'Lato', sans-serif !important;
+  font-size: 3rem;  
+
+  &.small{
+    font-size: 2rem;
+  }
+
+  &.realSmall{
+    font-size: 1rem;
+  }
+
+  &.footer-title{
+    font-size: 5rem;
+  }
+}
+
+@include mediaSm{
+  .main{
+    background: rgb(243, 249, 250);
+    // z-index: 3;
+  
+    &-raised-square, 
+    &-raised-rounded{
+      margin: 20px 30px 0;
+      box-shadow: $content-shadow;
+    }
+  
+    &-raised-rounded{
+      border-radius: 6px;
+    }
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Merriweather|Inconsolata);
+
+$purple: #c397d8;
+$red: #d54e53;
+$blue: #7aa6da;
+$orange: #e78c45;
+$turquoise: #4DD9B2;
+$green: #b9ca4a;
+$yellow: #FFDE00;
+
+

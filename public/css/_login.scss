@@ -1,0 +1,383 @@
+// *, *:before, *:after {
+//   box-sizing: border-box;
+//   margin: 0;
+//   padding: 0;
+// }
+$contW: 900px;
+$imgW: 260px;
+$formW: $contW - $imgW;
+$switchAT: 1.2s;
+
+$inputW: 260px;
+$btnH: 36px;
+
+
+@mixin signUpActive {
+  .cont.s--signup & {
+    @content;
+  }
+}
+
+body.login{
+  background-image: url('../images/loginPizza.jpg');
+  background-size: cover;
+}
+
+.login{
+  #primaryNavbar{
+    padding-right: 1%;
+  }
+}
+
+#login-page{
+  margin-top: 220px;
+
+  h2 {
+    width: 100%;
+    font-size: 26px;
+    text-align: center;
+  } 
+ 
+  input, button {
+    border: none;
+    outline: none;
+    background: none;
+    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin-top: 3px;
+    padding-bottom: 5px;
+    font-size: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    text-align: center;
+  
+    &:focus{
+      border-bottom: 3px solid rgba(0,0,0,0.4);
+    }
+  }
+
+  .tip {
+    font-size: 3rem;
+    margin: 40px auto 50px;
+    text-align: center;
+    color: white;  
+  }
+
+  .cont {
+    opacity: 80%;
+    overflow: hidden;
+    position: relative;
+    width: $contW;
+    height: 550px;
+    margin: 0 auto 100px;
+    background: rgba(255, 255, 255, 0.85);
+    -webkit-transition: .8s ease-in-out;
+    transition: .8s ease-in-out;    
+  
+    &:hover{
+      box-shadow: 14px 14px 2px 1px rgba(0, 0, 255, .2);
+      transform: scale(1.07);
+      opacity: 150%;
+    }
+
+    #login-form,#user-form {
+      position: relative;
+      width: $formW;
+      height: 100%;
+      transition: transform $switchAT ease-in-out;
+      padding: 50px 30px 0;
+
+
+      label {
+        display: block;
+        width: $inputW;
+        margin: 25px auto 0;
+        text-align: start;
+      
+        span {
+          font-size: 14px;
+          color: #687e88;   
+          font-weight: bold;    
+        }        
+      }  
+      
+      .text{
+        padding: 2rem;
+        background-color: rgba($color: #b69292, $alpha: 0.2);
+        border-radius: 35px;
+      }
+
+      .textMb{
+        padding: 13px;
+        background-color: rgba($color: #b69292, $alpha: 0.2);
+        border-radius: 35px;
+      }
+    }
+
+    .sub-cont {
+      overflow: hidden;
+      position: absolute;
+      left: $formW;
+      top: 0;
+      width: $contW;
+      height: 100%;
+      padding-left: $imgW;
+      background: #fff;
+      transition: transform $switchAT ease-in-out;
+    
+      @include signUpActive {
+        transform: translate3d($formW * -1,0,0);
+      }
+
+      .img {
+        overflow: hidden;
+        z-index: 2;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $imgW;
+        height: 100%;
+        padding-top: 360px;
+      
+        &:before {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: $contW;
+          height: 100%;
+          background-image: url('../images/food/none_copyright/signUp.jpg');
+          background-size: cover;
+          transition: transform $switchAT ease-in-out;
+        }
+      
+        &:after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.3);
+        }
+      
+        @include signUpActive {
+          &:before {
+            transform: translate3d($formW,0,0);
+          }
+        }
+      
+        &-text {
+          z-index: 2;
+          position: absolute;
+          left: 0;
+          top: 50px;
+          width: 100%;
+          padding: 0 20px;
+          text-align: center;
+          color: #fff;
+          transition: transform $switchAT ease-in-out;
+      
+          h2 {
+            margin-bottom: 10px;
+            font-weight: normal;
+          }
+      
+          p {
+            font-size: 14px;
+            line-height: 1.5;
+          }
+      
+          &.m-up {
+      
+            @include signUpActive {
+              transform: translateX($imgW*2);
+            }
+          }
+      
+          &.m-in {
+            transform: translateX($imgW * -2);
+      
+            @include signUpActive {
+              transform: translateX(0);
+            }
+          }
+        }
+      
+        &-btn {
+          overflow: hidden;
+          z-index: 2;
+          position: relative;
+          width: 100px;
+          height: $btnH;
+          margin: 0 auto;
+          margin-top: 40px;
+          padding: 1.5rem 4rem;
+          font-size: 15px;
+          border: 2px solid rgb(255, 255, 255);      
+          border-radius: 30px;         
+      
+          span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            transition: transform $switchAT;
+            
+            &.m-in {
+              transform: translateY($btnH*-2);
+
+              @include signUpActive {
+                transform: translateY(0);
+              }
+            }
+            
+            &.m-up {
+              @include signUpActive {
+                transform: translateY($btnH*2);
+              }
+            }
+          }
+        }
+      }
+    }    
+  }
+}
+
+#btn_login, #btn_logout{
+        
+  .submit{       
+    background-color: rgb(107, 197, 219);
+    transition: 0.5s ease-out;
+    color: white;
+   
+    &:hover{
+      background-color: rgb(216, 132, 219);
+      color: rgb(50, 30, 163);
+    }
+  }
+}
+
+#user-form{
+  .section-content{ 
+    
+    .goToMyPage{
+      margin-top: 15px;
+      background-color: rgba($color: #b65cc9, $alpha: 0.2);
+      width: 70%;
+      border-radius: 35px;
+
+      a{
+        text-decoration: underline;
+        font-weight: bolder;
+        color: rgb(55, 118, 143);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+
+
+
+// .fb-btn {
+//   border: 2px solid #d3dae9;
+//   color: darken(#d3dae9, 20%);
+
+//   span {
+//     font-weight: bold;
+//     color: darken(#768cb6, 20%);
+//   }
+// }
+
+.sign-in {
+  transition-timing-function: ease-out;
+
+  @include signUpActive {
+    transition-timing-function: ease-in-out;
+    transition-duration: $switchAT;
+    transform: translate3d($formW,0,0);
+  }
+}
+
+.sign-up {
+  transform: translate3d($contW * -1,0,0);
+
+  @include signUpActive {
+    transform: translate3d(0,0,0);
+  }
+}
+
+#signUp-modal{
+  form{
+    input{
+      border-radius: 1.1rem;
+
+      &:focus{
+        border-color: rgb(99, 168, 159);
+      }
+    }
+
+    .alert{
+      background-image: url('../images/food/none_copyright/sequrity.jpg');
+      background-position: center;
+      background-size: cover;
+
+      .card{
+        background-color: rgba(231, 201, 201, 0.5);
+        color: rgb(0, 0, 0);
+        border-radius: 15px;
+        padding: 1rem;
+      }
+    }
+  }
+}
+
+
+@include mediaSm{
+  #login-page{
+    margin: 35% 10px 0 10px;
+    .cont{
+      
+      position: static;
+      width: 90%;
+      height: 550px;
+      
+      background: rgb(255, 255, 255);
+      -webkit-transition: .8s ease-in-out;
+      transition: .8s ease-in-out;
+
+      &:hover{
+        transform: none; 
+      }
+
+      #login-form{
+        position: static;
+        height: 100%;
+        width: 100%;
+        transition: transform $switchAT ease-in-out;
+    
+        label{        
+          text-align: start;
+        }
+      }
+    }    
+
+    #user-form{
+      #btn_logout{
+        margin-top: 2rem;
+      }
+      .goToMyPage{
+        margin-top: 2rem;
+        margin-right: 268px;     
+      }
+    }
+  }
+}

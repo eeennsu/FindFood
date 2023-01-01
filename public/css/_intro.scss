@@ -1,0 +1,142 @@
+#topBanner-intro{
+  .section-content{
+    padding:0 0;
+  }
+
+  h1{
+    text-shadow: 4px 4px 0px #464343, 7px 7px 0px rgba(32, 32, 32, 0.2);
+  }
+
+  .info-text{
+    margin-top: 35px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;   
+  }  
+
+  .detail{
+    padding: 5px;  
+    color: rgb(0, 0, 0);
+    font-weight: normal;
+    border-radius: 25px;
+    background-color: rgba(66, 63, 63, 0.3);
+    transition: 0.6s ease;
+    &:hover{
+      color: rgb(255, 255, 255);
+      background-color:  rgba(14, 14, 14, 0.8);
+    }
+  }
+
+  &.banner{    
+    background-repeat: no-repeat;
+    background-attachment: fixed;         //고정 효과 연출가능
+    background-size: cover;
+    background-origin: border-box;
+    height: 50vh;    
+  }
+}
+
+#intro-effect{
+  background-repeat: repeat;
+  
+  .row img{
+    transition: all 0.2s ease-in-out;
+    border-radius: 2.4rem;  
+
+    &:hover{
+      transform: rotate(-5deg) scale(1.05, 1.05);
+      opacity: 1;
+    }     
+  }
+}
+
+#brand-history{
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-origin: border-box;
+  height: 50%;
+
+  .brand-content{
+    transition: 0.3s ease;
+    border-radius: 5rem;
+
+    &:hover{
+      background-color: rgba(0,0,0,0.8);
+    }    
+  }
+}
+
+
+#aboutOurFeatures{
+  .image-box{
+    .row img{
+      width: 99%;
+      margin: 10px 15px;
+      transition: all 0.25s ease-in-out;     
+      opacity: 0.4;        
+     
+      &#findBg:hover{
+        transform: rotate(-10deg);
+      }  
+  
+      &#gpsBg:hover{
+        transform: rotate(10deg);
+      } 
+       
+      &#mapBg:hover{    
+        transform: rotate(-10deg);
+      }  
+
+      &#resBg:hover{
+        transform: rotate(10deg);
+      }
+
+      &:hover{
+        opacity: 1;          
+      }     
+    }
+
+    &:hover img{   
+      transform: scale(0.85,0.85);
+    }
+  } 
+
+  #dice{
+    width: 150%;
+    border-radius: 35px;    
+  }
+
+  .faq{
+    // 첫번째 아코디언 버튼
+    // collapsed가 붙어있는 것은 제외한다  
+    
+    .accordion-button{
+      font-family: 'Gamja Flower', sans-serif;
+      font-size: 1.3rem;  
+      transition: 0.2s ease;
+    }
+
+    .accordion-button:not(.collapsed){
+      color:deepskyblue;       
+      font-size: 1.5rem;       
+    }
+  }
+}
+
+.info-sentence{
+  font-family: 'Gowun Batang', serif;
+}
+
+@include mediaSm{
+  #topBanner-intro{
+    .display-4{
+      margin-top: 40px;
+    }
+
+    #mobile-info{   
+      font-size: 1.2rem;
+      
+      color: black;  
+     }
+  }
+}

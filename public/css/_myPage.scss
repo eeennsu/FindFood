@@ -1,0 +1,33 @@
+$tableheight: 35px;
+#myPageBody{
+    background: #FFEEEE;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #DDEFBB, #FFEEEE);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #DDEFBB, #FFEEEE); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#update_form{
+    background: #ffdde1;
+    table{
+        th{
+            text-align: center;
+            color: rgb(5, 5, 5);
+            text-shadow: $shadow-xl;    
+            line-height: $tableheight;  
+            font-weight: bolder;  
+        }
+    
+        input{
+            height: $tableheight;
+        }
+        
+        .data{
+            height: $tableheight;
+            line-height: $tableheight;
+
+            .title{
+                color: rgb(33, 142, 175);
+                text-shadow: 2px 2px 3px rgb(188, 176, 241);
+            }
+        }
+    }   
+}

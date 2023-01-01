@@ -1,0 +1,20 @@
+#topBanner-signUp{
+  .alert{
+    background-image: url('../images/food/none_copyright/sequrity.jpg');
+    background-position: center;
+    background-size: cover;
+
+    .card{
+      background-color: rgba(231, 201, 201, 0.5);
+      color: rgb(0, 0, 0);  
+      border-radius: 15px;
+      padding: 1rem;
+    }
+  }
+}
+
+#signUp_section{
+  margin: 0 3rem;
+  border: 3px solid rgba($color: #272323, $alpha: 0.3);
+  border-radius: 2rem;
+}

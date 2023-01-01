@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FindFood / Foods</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- 애니메이션_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css" integrity="sha512-b42SanD3pNHoihKwgABd18JUZ2g9j423/frxIP5/gtYgfBz/0nDHGdY/3hi+3JwhSckM3JLklQ/T6tJmV7mZEw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- light box2_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="shortcut icon" href="#">
+  <!-- 룰렛 전용 css -->
+  <style>
+    /* 룰렛 전용 css */
+    td.the_wheel
+  {
+      background-image: url(images/wheel_back.png);
+      background-position: center;
+      background-repeat: none;
+  }
+
+  div.power_controls
+  {
+    margin-right: 40px;
+  }
+
+  div.html5_logo
+  {
+    margin-left:70px;
+  }
+
+  /* Styles for the power selection controls */
+  table.menu-table
+  {
+    background-color: #fff4f4;
+    width: 100%;   
+    margin-right: 100px;
+  }
+
+  table.menu-table td{
+    border: 2px solid lightslategrey;
+  } 
+
+  .pw1, .pw2, .pw3{
+    cursor: pointer;
+    background-color: #eef58f;
+  }
+
+  /* Style applied to the spin button once a power has been selected */
+  .clickable
+  {
+    cursor: pointer;
+  }
+
+  /* Other misc styles */
+  .margin_bottom
+  {
+    margin-bottom: 5px;
+  }
+
+  #mobile-controls{
+    border: 3px solid grey;
+    border-radius: 10px;
+    margin: 3rem 0;
+  }
+
+  .hoverCursor, .fa-arrows-spin{
+    cursor: pointer;
+  }
+
+  .menu-table{
+    background-color: white;
+    transition: 0.6s ease;
+  }
+
+  #menus{
+    margin-right: 30px;
+  }
+
+  .speed:hover{
+    background-color: rgb(182, 226, 253);
+  }
+
+  #fun-table{
+    margin-left: 3px;  
+  }
+
+  #fun-table td{
+   padding: 1rem 1rem;
+  }
+  
+  .custom-btn {
+  width: 130px;
+  height: 40px;
+  padding: 10px;
+  border: 2px solid rgb(255, 255, 255);
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  }
+
+  .btnHelp {
+   background: rgb(82, 192, 196);
+  color: #fff;
+  z-index: 1;
+  border-radius: 1rem;
+  }
+
+  .mbPw1{
+    background-color: rgb(255, 0, 0);
+    color: white;
+  }
+
+  .mbPw2{
+    background-color: rgb(0, 238, 255);
+    color: black;
+  }
+
+  .mbPw3{
+    background-color: rgb(0, 89, 255);
+    color: white;
+  }
+
+  .btnFunctions{
+    background: #FFBE3C;
+    color:#fff;
+    border:none;
+    position:relative;
+    padding: 9px 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+
+  .btnFunctions:hover{
+    background:#fff;
+    color: #FFBE3C;
+  }
+
+  .btnFunctions:before,.btnFunctions:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #FFBE3C;
+    transition:400ms ease all;
+  }
+
+  .btnFunctions:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+
+  .btnFunctions:hover:before,.btnFunctions:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+   .btnFunctions{
+    background: #FFBE3C;
+    color:#fff;
+    border:none;
+    position:relative;
+    padding: 9px 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+
+  .btnFunctions:hover{
+    background:#fff;
+    color: #FFBE3C;
+  }
+
+  .btnFunctions:before,.btnFunctions:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #FFBE3C;
+    transition:400ms ease all;
+  }
+
+  .btnFunctions:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+
+  .btnFunctions:hover:before,.btnFunctions:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+
+  /* asdasdasdasdasd*/
+  .btnFunctions2{
+    background: #e7f99e;
+    color:rgb(89, 48, 48);
+    border:none;
+    position:relative;
+    padding: 9px 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+  }
+
+  .btnFunctions2:hover{
+    background:#fff;
+    color: #e7f99e;
+  }
+
+  .btnFunctions2:before,.btnFunctions2:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: #e7f99e;
+    transition:400ms ease all;
+  }
+
+  .btnFunctions2:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+
+  .btnFunctions2:hover:before,.btnFunctions2:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+
+
+  </style>
+  <!-- 지도 전용 css -->
+  <style>
+    #placesList li {
+      list-style: none;
+      margin-left: -45px;
+    }
+
+    #placesList .item {
+      position: relative;
+      border-bottom: 1px solid #888;
+      overflow: hidden;
+      cursor: pointer;
+      min-height: 65px;
+    }
+
+    #placesList .item span {
+      display: block;
+      margin-top: 4px;
+    }
+
+    #placesList .item h5,
+    #placesList .item .info {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    #placesList .item .info {
+      padding: 10px 0 10px 55px;
+    }
+
+    #placesList .info .gray {
+      color: #8a8a8a;
+    }
+
+    #placesList .info .jibun {
+      padding-left: 26px;
+      background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;
+    }
+
+    #placesList .info .tel {
+      color: #009900;
+    }
+
+    #placesList .item .markerbg {
+      float: left;
+      position: absolute;
+      width: 36px;
+      height: 37px;
+      margin: 10px 0 0 10px;
+      background: url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;
+    }
+
+    #placesList .item .marker_1 {
+      background-position: 0 -10px;
+    }
+
+    #placesList .item .marker_2 {
+      background-position: 0 -56px;
+    }
+
+    #placesList .item .marker_3 {
+      background-position: 0 -102px
+    }
+
+    #placesList .item .marker_4 {
+      background-position: 0 -148px;
+    }
+
+    #placesList .item .marker_5 {
+      background-position: 0 -194px;
+    }
+
+    #placesList .item .marker_6 {
+      background-position: 0 -240px;
+    }
+
+    #placesList .item .marker_7 {
+      background-position: 0 -286px;
+    }
+
+    #placesList .item .marker_8 {
+      background-position: 0 -332px;
+    }
+
+    #placesList .item .marker_9 {
+      background-position: 0 -378px;
+    }
+
+    #placesList .item .marker_10 {
+      background-position: 0 -423px;
+    }
+
+    #placesList .item .marker_11 {
+      background-position: 0 -470px;
+    }
+
+    #placesList .item .marker_12 {
+      background-position: 0 -516px;
+    }
+
+    #placesList .item .marker_13 {
+      background-position: 0 -562px;
+    }
+
+    #placesList .item .marker_14 {
+      background-position: 0 -608px;
+    }
+
+    #placesList .item .marker_15 {
+      background-position: 0 -654px;
+    }
+
+    #pagination {
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    #pagination a {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    #pagination .on {
+      font-weight: bold;
+      cursor: default;
+      color: #777;
+    }
+  </style>  
+  <!-- 룰렛 전용 css, js 효과 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <!-- jquery 활성화 -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <!-- 지도 API -->
+  <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=bccnd3i75p&amp;submodules=geocoder"></script>
+  <!-- React Link-->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="index" id="foodBody">
+
+
+  <!-- scroolbar btn -->
+  <a id="scrolltoTop" class="shadow-xl">Top</a>
+
+
+
+  <!-- Navbar-->
+  <nav id="primaryNavbar" class="navbar navbar-expand-lg navbar-transparent fixed-top rgba-black-light"> <!-- fixed 스타일로 지정할 예정이다.-->
+    <div class="container-xxl">          
+      <a href="images/ourLogo2_large.png" data-lightbox="LightBox" data-title="FindFood" data-alt="FindFoodLogo">
+        <img id="ourLogo" src="images/ourLogo2.png" class="rounded" alt="FindFoodLogo" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This illustration was made by our member Jiho Lim. Would you like to click?">
+      </a>
+      <a class="navbar-brand" href="#">
+        <span class="text-white mx-2 mx-lg-4 our-title">Find Food</span>
+      </a>     
+      
+      <!-- 모바일 환경에서만 보이는 버튼, 클릭시 Nav메뉴가 나온다-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <span class="navbar-toggler-icon"></span>        
+      </button>
+
+      <!-- 모바일 환경에서만 보이는 nav-->
+      <nav id="offcanvasRight" class="offcanvas offcanvas-end d-block d-lg-none" data-bs-scroll="true" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvasRightLabel">Menu</h5>
+          <!-- 메뉴 리스트-->
+          <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-unstyled mobile-menu">
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/" class="text-decoration-none link-dark active">Home</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/intro" class="text-decoration-none link-dark">Intro</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/user/login" class="text-decoration-none link-dark">Login</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/foods" class="text-decoration-none link-dark">Foods</a>
+            </li>         
+            <li class="my-3 ps-1 border-bottom">
+              <span class="text-decoration-none link-dark have-subMenu">User</span>
+              <ul class="list-unstyled ps-4">
+                <li class="signUpLi">
+                  <a href="/page/signUp" class="text-decoration-none">Sign Up</a>
+                </li>
+                <li class="logoutLi">
+                  <a href="/user/logout_process" class="btn_logout text-decoration-none">Logout</a>
+                </li>           
+                <li class="myPageLi">                  
+                  <a class="text-decoration-none" href='/user/myPage'>My Page</a>                  
+                </li>  
+              </ul>
+            </li>
+          </ul>
+        </div>   
+      </nav>
+      <div class="collapse navbar-collapse m-0 mt-lg-5" id="navPrimaryContent" >
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">            
+            <a class="nav-link basic" href="/">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-house-chimney fa-2x"></i>
+                <p>Home</p>              
+              </div>
+            </a>           
+          </li>
+          <li class="nav-item">          
+            <a class="nav-link basic" href="/page/intro">
+              <div class="row justify-content-center">
+                <i class="fa fa-circle-info fa-2x"></i>
+                <p>Intro</p>                
+              </div>               
+            </a>           
+          </li>
+          <li class="nav-item">          
+            <a class="nav-link basic" href="/user/login" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-user-check fa-2x"></i>
+                <p>Login</p>
+              </div>
+            </a>                          
+          </li>        
+          <li class="nav-item">            
+            <a class="nav-link basic active" aria-current="page" href="/page/foods" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-utensils fa-2x active"></i>
+                <p>Foods</p>
+                <hr class="nav-divider">                
+              </div>
+            </a>      
+          </li>          
+          <li class="nav-item dropdown">            
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-head-side-virus fa-2x"></i>
+                <p>User</p>
+              </div>
+            </a>           
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="signUpLi">
+                <a class="dropdown-item" href="/page/signUp">                    
+                  <i class="fa-solid fa-user-plus me-1"></i>
+                  <span>Sign Up</span>              
+                </a>
+              </li>
+              <li class="logoutLi">
+                <a class="btn_logout dropdown-item" href="/user/logout_process">        
+                  <i class="fa-solid fa-right-from-bracket me-1"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+              <li class="myPageLi">               
+                <a class="dropdown-item" href="/user/myPage">
+                  <i class="fa-solid fa-user-gear me-1"></i>
+                  <span>My Page</span>
+                </a>             
+              </li>
+            </ul>   
+          </li>
+        </ul>
+      </div>      
+    </div>
+  </nav>
+
+  <script src="/js/back/navbarStateUI.js"></script> 
+
+
+
+  <section id="topBanner-food" class="mb-0 d-md-flex d-none justify-content-center align-items-center">
+    <div class="section-content-foods">
+      <div class="container text-center rgba-black-light py-4 text-white">
+        <h1 class="display-4 font_nuntio">Let's Go Find</h1>
+        <hr class="hr-white">
+        <p class="font_poor-story fs-4"><span class="our-title small">Find Food</span>의 핵심적인 기능을 담당하는 페이지입니다! 이곳에서 음식을 찾고, 고르고, 룰렛을 돌리세요!</p>
+      </div>
+    </div>
+  </section>
+
+
+    
+  <section id="letsGoFind" class="main main-raised-rounded wow fadeIn">
+    <div id="selectFood" class="container-xxl">
+      <div class="row justify-content-center">       
+        <div class="tabs">
+          <ul class="tabs__links">
+            <li>
+              <button class="tabs__link">
+                <span class="tabs__link__text" data-text="Korean">Korean</span>
+              </button>
+            </li>
+            <li>
+              <button class="tabs__link">
+                <span class="tabs__link__text" data-text="Western">Western</span>
+              </button>
+            </li>
+            <li>
+              <button class="tabs__link">
+                <span class="tabs__link__text" data-text="Chinese">Chinese</span>
+              </button>
+            </li>
+            <li>
+              <button class="tabs__link">
+                <span class="tabs__link__text" data-text="Japanese">Japanese</span>
+              </button>
+            </li>
+            <li>
+              <button class="tabs__link">
+                <span class="tabs__link__text" data-text="Dessert & Snack">Dessert & Snack</span>
+              </button>
+            </li>
+          </ul>
+          <ul class="tabs__contents">
+            <li>
+              <div class="tabs__content">
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                             
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">               
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/ddeogboggi.jpg" class="card-img-top" alt="...">                  
+                      </a>  
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">떡볶이</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div>                       
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/gugbab.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">국밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/gimbap.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">김밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/lamyeon.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">라면</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                 
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/samgyupsal.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">삼겹살</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/darkgalbi.png " class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">닭갈비</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/bulgogi.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">불고기</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/gobchang.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">곱창</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/kimchiStew.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">김치찌개</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/boodaeggigae.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">부대찌개</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/galbitang.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">갈비탕</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/sullungtang.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">설렁탕</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/kalgooksu.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">칼국수</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/janchigooksu.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">잔치국수</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/moolneangmyeon.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">물냉면</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/kr/bibimneangmyeon.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">비빔면</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>                
+              </div>
+            </li>
+            <li>
+              <div class="tabs__content">
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                             
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">               
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/risotto.png" class="card-img-top" alt="...">                  
+                      </a>  
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">리소토</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div>                       
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/salad.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">샐러드</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/soup.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">스프</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/hotDog.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">핫도그</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                 
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/salmonSteak.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">연어 스테이크</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/macAndCheese.png " class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">맥엔치즈</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/gambasAlAjillo.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">감바스</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/frenchFries.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">감자튀김</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/pasta.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">파스타</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/pizza.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">피자</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/burger.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">햄버거</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/steak.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">스테이크</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/kebab.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">케밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/sausage.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">소시지</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/chicken.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">치킨</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/wt/sandwich.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">샌드위치</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>                 
+              </div>
+            </li>
+            <li>
+              <div class="tabs__content">
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                             
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">               
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/jajangmyeon.png" class="card-img-top" alt="...">                  
+                      </a>  
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">짜장면</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div>                       
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/jjambbong.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">짬뽕</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/spicyNumbingSoup.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">마라탕</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/sweetAndSourPork.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">탕수육</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                 
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/youlinji.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">유린기</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/lambSkewers.png " class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">양꼬치</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/pekingDuck.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">북경 오리구이</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/maraXiangguo.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">마라샹궈</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/chaofan.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">볶음밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/mapoTofu.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">마파두부</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/shrimpToast.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">멘보샤</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/hotPot.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">훠궈</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/dongporou.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">동파육</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/chiliShrimp.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">칠리새우</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/dimSum.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">딤섬</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/ch/coldDishes.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">냉채</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>                 
+              </div>
+            </li>
+            <li>
+              <div class="tabs__content">
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                             
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">               
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/sushi.png" class="card-img-top" alt="...">                  
+                      </a>  
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">초밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div>                       
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/sliceOfRawFish.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">회</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/sushiBowl.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">회덮밥</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/takoyaki.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">타코야키</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                 
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/soba.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">소바</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/ramen.png " class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">라멘</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/udon.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">우동</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/nagasakiNoodles.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">나가사키 짬뽕</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/gacheudong.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">가츠동</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/gyudong.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">규동</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/ebiFurai.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">새우튀김</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/oyakodon.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">오야코동</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/tempuraRiceBowl.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">텐동</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/karaage.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">가라아게</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/korokke.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">고로케</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/none_copyright/jp/yubu.png" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">유부</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>                 
+              </div>
+            </li>
+            <li>
+              <div class="tabs__content">
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                             
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">               
+                      <a class="gotomap">
+                        <img src="images/food/dessert/coffee.jpg" class="card-img-top" alt="...">                  
+                      </a>  
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">커피</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div>                       
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/cake.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">케이크</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/bread.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">빵</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/donut.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">도너츠</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">                 
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/cafe.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">카페</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/icecream.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">아이스크림</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/wapple.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">와플</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/cookie.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">쿠키</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>
+                <div class="row align-items-center justify-content-md-around justify-content-center line">
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/macarong.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">마카롱</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/hodduck.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">호떡</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/puding.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">푸딩</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-6">
+                    <div class="card pushRoullets">
+                      <a class="gotomap">
+                        <img src="images/food/dessert/super.jpg" class="card-img-top" alt="...">
+                      </a> 
+                      <div class="row">
+                        <div class="offset-3 col-6 food-name">편의점</div>
+                        <div class="col-1 addR"><i class="fa-solid fa-2x fa-arrows-spin"></i></div>
+                      </div> 
+                    </div>
+                  </div>                  
+                </div>                       
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- roulette seciton-->
+  <section id="section-roulette">
+    <div class="section-content">
+      <div class="container">
+        <div id="mini-section" class="row justify-content-center align-content-center">          
+          <div class="col-md-6">      
+            <table cellpadding="0" cellspacing="0">
+              <tr>
+                <td> 
+                  <div class="power_controls d-md-block d-none row justify-content-center">     
+                    <div class="row justify-content-center" id="menus">                    
+                      <div class="col-6">                        
+                        <table class="menu-table text-center" cellpadding="25" cellspacing="0">                    
+                          <tr class="hoverCursor speed">
+                              <td id="pw3" onClick="powerSelected(3);">High</td>
+                          </tr>
+                          <tr class="hoverCursor speed"> 
+                              <td id="pw2" onClick="powerSelected(2);">Med</td>
+                          </tr>
+                          <tr class="hoverCursor speed">
+                              <td id="pw1" onClick="powerSelected(1);">Low</td>
+                          </tr>                   
+                        </table>  
+                      </div>
+                      <div class="col-6" id="functions">                                         
+                        <table class="menu-table text-center me-5" id="fun-table">
+                          <tr>
+                            <td> 
+                              <button class="btnFunctions spin_button" onClick="startSpin(); return false;"><span>OFF</span></button>
+                            </td>                      
+                          </tr> 
+                          <tr>
+                            <td>
+                              <button class="btnFunctions" onClick="resetWheel(); return false;"><span>Again</span></button>
+                            </td>                      
+                          </tr>
+                          <tr>
+                            <td>
+                              <button class="btnFunctions" onClick="resetRoulet(); return false;"><span>Reset</span></button>
+                            </td>                   
+                          </tr>                      
+                        </table>       
+                      </div>
+                    </div>                                             
+                  </div>
+                </td>
+                <td width="438" height="582" class="the_wheel" valign="center">
+                  <canvas id="canvas" width="434" height="434">
+                      <p style="color:white">Sorry, your browser doesn't support canvas. Please try another.</p>
+                  </canvas>
+                </td>
+              </tr>
+            </table>
+            <div id="mobile-controls" class="d-md-none d-block text-center">
+              <p class="font_gamja-Flower fst-italic fs-3">Select Power!</p>
+              <button id="mbPower_1" class="btn-outline-danger mobliePower"  onClick="powerSelected_mb(3);">High</button>
+              <button id="mbPower_2" class="btn-outline-info mobliePower"  onClick="powerSelected_mb(2);">Md</button>
+              <button id="mbPower_3" class="btn-outline-primary mobliePower"  onClick="powerSelected_mb(1);">Slow</button>
+              <br>
+              <button alt="Spin" class="btnFunctions fs-2 mt-3 spin_button fs-5" onClick="startSpin();">OFF</button>
+              <br><br>
+              <a class="text-decoration-none btn btn-primary mb-3 btnFunctions" href="#" onClick="resetWheel(); return false;">다시</a>
+              <a class="text-decoration-none btn btn-dark mb-3 btnFunctions" href="#" onClick="resetRoulet(); return false;">리셋</a>   <br>  
+              <button type="button" class="btn btn-outline-success my-2" data-bs-toggle="modal" data-bs-target="#rouletteModal">
+                Help
+              </button>  
+            </div>
+          </div>                    
+        </div>    
+        <div class="text-center">
+          <button class="btnFunctions2 mt-3" type="button" data-bs-toggle="modal" data-bs-target="#rouletteModal">
+            Help
+          </button> 
+        </div>       
+      </div>
+    </div>
+  </section>     
+
+  <!-- Modal -->
+  <div class="modal fade" id="rouletteModal" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">What is this???</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ⓐ High, Med, Low 의 세가지 버튼은 룰렛의 스핀 속도를 설정해줍니다! 여러분의 스타일에 따라 스피드를 설정해보세요! <br><br>
+          ⓑ 최소 2가지 음식을 룰렛에 추가해요 SPIN 버튼이 활성화됩니다! 룰렛에 추가는 <i class="fa-solid fa-2x fa-arrows-spin"></i>버튼을 클릭하세요.<br><br>
+          ⓒ Play Again 버튼은 현재 아이템을 초기화 하지 않고 룰렛을 다시 돌리고 싶을 때 사용하는 기능입니다.<br><br>
+          ⓓ Reset 버튼은 룰렛의 모든 아이템을 초기화해줍니다. 음식을 다시 고르고 싶을 때 선택해주세요!
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+
+  <!-- Map -->
+  <section id="contactMap">
+    <div class="section-content">
+      <div class="container-fluid">
+        <div id="plus_wrap" style="display: none;" class="bg-light">
+          <button type="button" class="btn btn-warning btn-sm toggleBtn" onclick="hideSearchForm(false); return false">                      
+            <i class="fa-regular fa-plus"></i>
+          </button>
+        </div>
+        <div id="map_wrap" class="map_wrap">
+          <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+          <div id="menu_wrap" class="bg_white">
+            <div class="option">
+              <div id="searchDiv">
+                <form id="mapForm" onsubmit="searchPlaces(); return false;">
+                  <label>
+                    키워드 : <input type="text" value="" id="keyword" size="15">
+                  </label>                  
+                  <button type="submit" id="btnSearch" class="btn btn-outline-warning btn-sm toggleBtn">검색</button>
+                  <button type="button" id="closeSearch" class="btn btn-outline-warning btn-sm toggleBtn" onclick="hideSearchForm(true); return false"><i class="fa-regular fa-x"></i></button>                
+                </form>                
+              </div>
+            </div>
+            <hr>
+            <ul id="placesList" ></ul>
+            <div id="pagination"></div>
+          </div>
+        </div>       
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer id="footer"> 
+  </footer>  
+  
+  
+  <script>
+    let tabLinks = document.querySelectorAll(".tabs__link");
+    let tabContents = document.querySelectorAll(".tabs__content");
+
+    tabLinks[0].classList.add("active");
+    tabContents[0].classList.add("active");
+
+    tabLinks.forEach((tabLink, i) => {
+      tabLink.addEventListener("click", (e) => {
+        tabLinks.forEach((tabLink) => tabLink.classList.remove("active"));
+        tabContents.forEach((tabContent) => tabContent.classList.remove("active"));
+        tabLink.classList.add("active");
+        tabContents[i].classList.add("active");
+      });
+    });
+  </script>
+
+
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a243c6fb250f58ff43dac8a200019d31&libraries=services,clusterer,drawing"></script>
+  <script>
+    const map_wrap = document.querySelector('#map_wrap');
+    const mapDiv = document.querySelector('#map');    
+    const closeSearch = document.querySelector('#closeSearch');
+    const menu_wrap = document.querySelector('#menu_wrap');
+    const plus_wrap = document.querySelector('#plus_wrap');
+
+    
+    async function getLocation() {
+      let XY = new Object();
+
+      if (navigator.geolocation) {
+        let promise = new Promise((res, rej) => {
+          navigator.geolocation.getCurrentPosition((position) => {
+            res(position);
+          });
+        });
+
+        let position = await promise;         // promise를 받아올 때 까지 기다려준다.
+        XY.lat = position.coords.latitude;
+        XY.lng = position.coords.longitude;             // 경도
+      }
+
+      return XY;
+    }
+
+    var map;
+    let XY;
+
+    $(document).ready(async () => {
+
+      // 아래에서 선언한 위도경도 가져와주는 함수
+      XY = await getLocation();
+
+      $.ajax({
+        success: () => {       
+          // 옵션 적용하여 생성    
+          var mapOptions = {
+            center: new kakao.maps.LatLng(XY.lat, XY.lng),
+            level: 3,
+          };
+
+          map = new kakao.maps.Map(mapDiv, mapOptions);
+        },
+
+        error: (request, status, error) => {
+
+        }
+      });
+    });
+
+    // 마커를 담을 배열입니다
+    var markers = [];
+
+    // 장소 검색 객체를 생성합니다
+    var ps = new kakao.maps.services.Places();
+
+    // 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
+    var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
+
+    // 키워드 검색을 요청하는 함수입니다
+    function searchPlaces() {   
+      let value = keyword.value;  
+      if (!value.replace(/^\s+|\s+$/g, '')) {
+        alert('키워드를 입력해주세요!');
+        return false;
+      }
+        
+       // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
+        ps.keywordSearch(value, placesSearchCB, {
+        radius: 2000,
+        location: new kakao.maps.LatLng(XY.lat, XY.lng)
+      });      
+    }
+
+    // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
+    function placesSearchCB(data, status, pagination) {
+      if (status === kakao.maps.services.Status.OK) {
+
+        // 정상적으로 검색이 완료됐으면
+        // 검색 목록과 마커를 표출합니다
+        displayPlaces(data);
+
+        // 페이지 번호를 표출합니다
+        displayPagination(pagination);    
+
+        contactMap.scrollIntoView();
+
+      } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
+
+        alert('해당 위치에서의 검색 결과가 존재하지 않습니다.');
+        return;
+
+      } else if (status === kakao.maps.services.Status.ERROR) {
+
+        alert('검색 결과 중 오류가 발생했습니다. 관리자에게 문의해주세요');
+        return;
+      }
+    }
+
+    // 검색 결과 목록과 마커를 표출하는 함수입니다
+    function displayPlaces(places) {
+      var listEl = document.getElementById('placesList'),
+        menuEl = document.getElementById('menu_wrap'),
+        fragment = document.createDocumentFragment(),
+        bounds = new kakao.maps.LatLngBounds(),
+        listStr = '';
+
+      // 검색 결과 목록에 추가된 항목들을 제거합니다
+      removeAllChildNods(listEl);
+
+      // 지도에 표시되고 있는 마커를 제거합니다
+      removeMarker();
+
+      for (var i = 0; i < places.length; i++) {
+        // 마커를 생성하고 지도에 표시합니다
+        var placePosition = new kakao.maps.LatLng(places[i].y, places[i].x),
+          marker = addMarker(placePosition, i),
+          itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
+
+        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
+        // LatLngBounds 객체에 좌표를 추가합니다
+        bounds.extend(placePosition);
+
+        // 마커와 검색결과 항목에 mouseover 했을때
+        // 해당 장소에 인포윈도우에 장소명을 표시합니다
+        // mouseout 했을 때는 인포윈도우를 닫습니다
+        (function (marker, title) {
+          kakao.maps.event.addListener(marker, 'mouseover', function () {
+            displayInfowindow(marker, title);
+          });
+
+          kakao.maps.event.addListener(marker, 'mouseout', function () {
+            infowindow.close();
+          });
+
+          itemEl.onmouseover = function () {
+            displayInfowindow(marker, title);
+          };
+
+          itemEl.onmouseout = function () {
+            infowindow.close();
+          };
+        })(marker, places[i].place_name);
+
+        fragment.appendChild(itemEl);
+      }
+
+      // 검색결과 항목들을 검색결과 목록 Element에 추가합니다
+      listEl.appendChild(fragment);
+      menuEl.scrollTop = 0;
+
+      // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
+      map.setBounds(bounds);
+    }
+
+    // 검색결과 항목을 Element로 반환하는 함수입니다
+    function getListItem(index, places) {
+      var el = document.createElement('li'),
+        itemStr = '<span class="markerbg marker_' + (index + 1) + '"></span>' +
+          '<div class="info">' +
+          '   <h5>' + places.place_name + '</h5>';
+
+      if (places.road_address_name) {
+        itemStr += '    <span>' + places.road_address_name + '</span>' +
+          '   <span class="jibun gray">' + places.address_name + '</span>';
+      } else {
+        itemStr += '    <span>' + places.address_name + '</span>';
+      }
+
+      itemStr += '  <span class="tel">' + places.phone + '</span>' +
+        '</div>';
+
+      el.innerHTML = itemStr;
+      el.className = 'item';
+
+      return el;
+    }
+
+    // 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
+    function addMarker(position, idx, title) {
+      var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
+        imageSize = new kakao.maps.Size(36, 37),  // 마커 이미지의 크기
+        imgOptions = {
+          spriteSize: new kakao.maps.Size(36, 691), // 스프라이트 이미지의 크기
+          spriteOrigin: new kakao.maps.Point(0, (idx * 46) + 10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
+          offset: new kakao.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+        },
+        markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imgOptions),
+        marker = new kakao.maps.Marker({
+          position: position, // 마커의 위치
+          image: markerImage
+        });
+
+      marker.setMap(map); // 지도 위에 마커를 표출합니다
+      markers.push(marker);  // 배열에 생성된 마커를 추가합니다
+
+      return marker;
+    }
+
+    // 지도 위에 표시되고 있는 마커를 모두 제거합니다
+    function removeMarker() {
+      for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
+      }
+      markers = [];
+    }
+
+    // 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
+    function displayPagination(pagination) {
+      var paginationEl = document.getElementById('pagination'),
+        fragment = document.createDocumentFragment(),
+        i;
+
+      // 기존에 추가된 페이지번호를 삭제합니다
+      while (paginationEl.hasChildNodes()) {
+        paginationEl.removeChild(paginationEl.lastChild);
+      }
+
+      for (i = 1; i <= pagination.last; i++) {
+        var el = document.createElement('a');
+        el.href = "#";
+        el.innerHTML = i;
+
+        if (i === pagination.current) {
+          el.className = 'on';
+        } else {
+          el.onclick = (function (i) {
+            return function () {
+              pagination.gotoPage(i);
+            }
+          })(i);
+        }
+
+        fragment.appendChild(el);
+      }
+      paginationEl.appendChild(fragment);
+    }
+
+    // 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
+    // 인포윈도우에 장소명을 표시합니다
+    function displayInfowindow(marker, title) {
+      var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
+
+      infowindow.setContent(content);
+      infowindow.open(map, marker);
+    }
+
+    // 검색결과 목록의 자식 Element를 제거하는 함수입니다
+    function removeAllChildNods(el) {
+      while (el.hasChildNodes()) {
+        el.removeChild(el.lastChild);
+      }
+    }
+
+    function hideSearchForm(hide){
+      menu_wrap.style.display = hide ? 'none' : 'block';
+      map_wrap.style.marginLeft = hide ? '103px' : '7rem'; 
+      plus_wrap.style.display = hide ? 'inline-block' : 'none';
+    }   
+    
+
+  </script>
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <!-- light box2_cdnjs 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- 애니메이션 다양한 효과 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <!-- nav react-->
+  <!-- <script src="js/usingReact/pcNavbar.jsx" type="text/babel"></script> -->
+  <script type="module" src="js/main.js"></script> 
+  <script src="js/Winwheel.min.js"></script>
+  <script>
+    let wheelPower    = 0;
+    let wheelSpinning = false;
+    let audio = new Audio('images/tick.mp3');  // Create audio object and load tick.mp3 file.
+    let addArray = [];
+    let rouletteCnt = 0;
+
+    const addBtn = document.querySelectorAll('.addR');    
+    const keyword = document.querySelector('#keyword');
+    const contactMap = document.querySelector('#contactMap');
+    const roulette = document.querySelector('#section-roulette');
+
+    addBtn.forEach((btn) => {
+      btn.addEventListener("click", () => pushFood(btn.parentElement.firstElementChild.innerHTML));
+    });
+
+    const gotomaps = document.querySelectorAll('.gotomap').forEach((element) => {
+      element.addEventListener('click', () => findfood(element.parentElement.children[1].firstElementChild.innerHTML));
+    });
+
+    const spin_button = document.querySelectorAll('.spin_button');
+    
+    function findfood(name){        
+      keyword.value = name;
+      searchPlaces();                   
+    }
+
+    let theWheel = () => {
+      return new Winwheel({
+        'numSegments'  : rouletteCnt <= 2 ? 2 : rouletteCnt,     // Specify number of segments.
+        'outerRadius'  : 208,   // Set outer radius so wheel fits inside the background.
+        'textFontSize' : 24,    // Set font size as desired.
+        'segments'     :        // Define segments including colour and text.
+        [
+           {'fillStyle' : '#f9ff9e', 'text' : `${addArray[0] || ''}`},
+           {'fillStyle' : '#fbffde', 'text' : `${addArray[1] || ''}`},
+           {'fillStyle' : '#7de6ef', 'text' : `${addArray[2] || ''}`},
+           {'fillStyle' : '#c4aef5', 'text' : `${addArray[3] || ''}`},
+           {'fillStyle' : '#e7706f', 'text' : `${addArray[4] || ''}`},
+           {'fillStyle' : '#89f26e', 'text' : `${addArray[5] || ''}`},
+           {'fillStyle' : '#ffd89e', 'text' : `${addArray[6] || ''}`},
+           {'fillStyle' : '#fc95ad', 'text' : `${addArray[7] || ''}`},
+           {'fillStyle' : '#94b0ff', 'text' : `${addArray[8] || ''}`},
+           {'fillStyle' : '#eae56f', 'text' : `${addArray[9] || ''}`},
+        ],
+        'animation' :           // Specify the animation to use.
+        {
+            'type'     : 'spinToStop',
+            'duration' : 15,
+            'spins'    : 8,
+            'callbackFinished' : alertPrize,
+            'callbackSound'    : playSound,   // Function to call when the tick sound is to be triggered.
+            'soundTrigger'     : 'pin'        // Specify pins are to trigger the sound, the other option is 'segment'.
+        },
+        'pins' :
+        {
+            'number' : 16   // Number of pins. They space evenly around the wheel.
+        }
+        ,
+
+    });
+    };    
+    
+    theWheel();
+
+    function pushFood(name){
+      if(addArray.length <= 9){
+        addArray.push(name);
+        rouletteCnt++;
+        theWheel();
+
+        if(rouletteCnt >= 2){       
+          spin_button.forEach((x) => x.textContent = "SPIN");
+        }
+      }
+
+      else{
+        alert('최대 10개까지 추가 가능합니다!');
+        roulette.scrollIntoView();
+      }   
+    }
+     
+    
+    // -----------------------------------------------------------------
+    // This function is called when the segment under the prize pointer changes
+    // we can play a small tick sound here like you would expect on real prizewheels.
+    // -----------------------------------------------------------------
+   
+    function playSound()
+    {
+        // Stop and rewind the sound if it already happens to be playing.
+        audio.pause();
+        audio.currentTime = 0;
+
+        // Play the sound.
+        audio.play();
+    }
+
+
+    // 룰렛 당첨후 콜백되는 함수
+    function alertPrize(name)
+    {
+        wheelSpinning = false;
+        // 이후 지도 검색하는 로직 추가하면 된다!
+        let FindFood = confirm(`${name.text}이(가) 당첨되었습니다! 지도에 검색하시겠습니까?`);
+     
+        if(FindFood){
+          // // 지도 검색 로직       
+          keyword.value = name.text;
+          searchPlaces();    
+        }  
+        
+        spin_button.forEach(x=>{
+          btnStartEffect(x, false);
+        })
+    }   
+
+   
+    function powerSelected(powerLevel)
+    {
+        if (!wheelSpinning) {         
+            document.getElementById('pw1').className = "";
+            document.getElementById('pw2').className = "";
+            document.getElementById('pw3').className = "";
+
+            if (powerLevel === 1) {
+                document.getElementById('pw1').className = "pw1";
+            }
+
+            if (powerLevel === 2) {
+                document.getElementById('pw2').className = "pw2";
+            }
+
+            if (powerLevel === 3) {
+                document.getElementById('pw3').className = "pw3";
+            }
+            
+            // 파워레벨 설정
+            wheelPower = powerLevel;
+        }
+    }
+
+    function powerSelected_mb(powerLevel)
+    {
+      const mbPower_1 = document.querySelector('#mbPower_1');
+      const mbPower_2 = document.querySelector('#mbPower_2');
+      const mbPower_3 = document.querySelector('#mbPower_3');
+
+        if (!wheelSpinning) {         
+          mbPower_1.classList.remove("mbPw1");
+          mbPower_2.classList.remove("mbPw2");
+          mbPower_3.classList.remove("mbPw3");
+
+            if (powerLevel === 1) {
+              mbPower_3.classList.add("mbPw3");
+            }
+
+            else if (powerLevel === 2) {
+              mbPower_2.classList.add("mbPw2");
+            }
+
+            else if (powerLevel === 3) {
+              mbPower_1.classList.add("mbPw1");
+            }                        
+            // 파워레벨 설정
+            wheelPower = powerLevel;
+        }
+    }
+
+
+    function startSpin()
+    {
+        if(rouletteCnt<=1){
+          alert('아이템을 최소 2개 추가해주세요!');
+          return;
+        }
+
+        let wheel = theWheel();
+      
+        if (wheelSpinning == false) {
+            if (wheelPower == 1) {
+                wheel.animation.spins = 3;
+            } else if (wheelPower == 2) {
+                wheel.animation.spins = 8;
+            } else if (wheelPower == 3) {
+                wheel.animation.spins = 15;
+            }
+
+            // Disable the spin button so can't click again while wheel is spinning.
+
+            spin_button.forEach((x=>{
+              btnStartEffect(x, true);
+            }));
+           
+            //document.getElementById('spin_button').className = "";
+
+            // Begin the spin animation by calling startAnimation on the wheel object.
+            wheel.startAnimation();
+
+            // Set to true so that power can't be changed and spin button re-enabled during
+            // the current animation. The user will have to reset before spinning again.
+            wheelSpinning = true;
+        }
+    }
+
+    function btnStartEffect(btn, off){
+      if(off){
+        btn.textContent = 'wait...';
+        btn.disabled = true;
+        btn.classList.add('opacity-50');
+      }
+
+      else{
+        if(rouletteCnt>=2){
+          btn.textContent = 'SPIN';          
+        }
+
+        else{
+          btn.textContent = 'OFF';   
+        }
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+      } 
+    }
+
+    function resetWheel()
+    {
+      if(wheelSpinning){
+        if(rouletteCnt>=2){
+          spin_button.forEach(x=>{
+          btnStartEffect(x, false);
+          });
+        }     
+
+        let wheel = theWheel();
+        wheel.stopAnimation(false);  // Stop the animation, false as param so does not call callback function.
+        wheel.rotationAngle = 0;     // Re-set the wheel angle to 0 degrees.
+        wheel.draw();                // Call draw to render changes to the wheel.
+
+        document.getElementById('pw1').className = "";  // Remove all colours from the power level indicators.
+        document.getElementById('pw2').className = "";
+        document.getElementById('pw3').className = "";
+
+        wheelSpinning = false;          // Reset to false to power buttons and spin can be clicked again.
+      }     
+    }
+
+    // 룰렛의 아이템 초기화하는 함수
+    function resetRoulet(){
+      rouletteCnt = 0;
+      addArray.length = 0;
+      spin_button.forEach(x=>{
+        btnStartEffect(x, false);
+      });
+      resetWheel();  
+      theWheel();
+    }
+
+  </script>
+  <!-- 푸터 react -->
+  <script src="js/reactComponents/footer.jsx" type="text/babel"></script>
+</body>
+</html>

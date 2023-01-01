@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="=device-width, initial-scale=1.0">
+  <title>Find Food | Main</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- wow 애니메이션_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.compat.min.css" integrity="sha512-b42SanD3pNHoihKwgABd18JUZ2g9j423/frxIP5/gtYgfBz/0nDHGdY/3hi+3JwhSckM3JLklQ/T6tJmV7mZEw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Animate.css 애니메이션 cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- light box2_cdnjs 링크-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" integrity="sha512-ZKX+BvQihRJPA8CROKBhDNvoc2aDMOdAlcm7TUQY+35XYtrd3yh95QOOhsPDQY9QnKE0Wqag9y38OIgEvb88cA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="shortcut icon" href="#">
+  <!-- React Link-->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body class="bg">
+
+
+
+  <!-- scroolbar btn -->
+  <a id="scrolltoTop" class="shadow-xl">Top</a>
+
+ 
+
+  <!-- Navbar-->  
+  <nav id="primaryNavbar" class="navbar navbar-expand-lg navbar-transparent fixed-top rgba-black-light"> <!-- fixed 스타일로 지정할 예정이다.-->
+    <div class="container-xxl">
+      <a href="images/ourLogo2_large.png" data-lightbox="LightBox" data-title="FindFood" data-alt="FindFoodLogo">
+        <img id="ourLogo" src="images/ourLogo2.png" class="rounded" alt="FindFoodLogo" data-bs-toggle="tooltip" data-bs-placement="bottom" title="This illustration was made by our member Jiho Lim. Would you like to click?">
+      </a>
+      <a class="navbar-brand" href="#">
+        <span class="text-white mx-2 mx-lg-4 our-title">Find Food</span>
+      </a>  
+      <!-- 모바일 환경에서만 보이는 버튼, 클릭시 Nav메뉴가 나온다-->
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 모바일 환경에서만 보이는 nav-->
+      <nav id="offcanvasRight" class="offcanvas offcanvas-end d-block d-lg-none" data-bs-scroll="true" tabindex="-1" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvasRightLabel">Menu</h5>
+          <!-- 메뉴 리스트-->
+          <button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="list-unstyled mobile-menu">
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/" class="text-decoration-none link-dark active">Home</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/intro" class="text-decoration-none link-dark">Intro</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/user/login" class="text-decoration-none link-dark">Login</a>
+            </li>
+            <li class="my-3 ps-3 border-bottom">
+              <a href="/page/foods" class="text-decoration-none link-dark">Foods</a>
+            </li>
+            <li class="my-3 ps-1 border-bottom">
+              <span class="text-decoration-none link-dark have-subMenu">User</span>
+              <ul class="list-unstyled ps-4">
+                <li class="signUpLi">
+                  <a href="/page/signUp" class="text-decoration-none">Sign Up</a>
+                </li>
+                <li class="logoutLi">
+                  <a href="/user/logout_process" class="btn_logout text-decoration-none">Logout</a>
+                </li>
+                <li class="myPageLi">                  
+                  <a class="text-decoration-none" href='/user/myPage'>My Page</a>                  
+                </li> 
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="collapse navbar-collapse m-0 mt-lg-5" id="navPrimaryContent" >
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link basic active" aria-current="page" href="/">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-house-chimney fa-2x active"></i>
+                <p>Home</p>
+                <hr class="nav-divider">
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link basic" href="/page/intro">
+              <div class="row justify-content-center">
+                <i class="fa fa-circle-info fa-2x"></i>
+                <p>Intro</p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link basic" href="/user/login" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-user-check fa-2x"></i>
+                <p>Login</p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link basic" href="/page/foods" tabindex="-1" aria-disabled="true">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-utensils fa-2x "></i>
+                <p>Foods</p>
+              </div>
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="row justify-content-center">
+                <i class="fa-solid fa-head-side-virus fa-2x"></i>
+                <p>User</p>
+              </div>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="signUpLi">
+                <a class="dropdown-item" href="/page/signUp">        
+                  <i class="fa-solid fa-user-plus me-1"></i>
+                  <span>Sign Up</span>
+                </a>
+              </li>
+              <li class="logoutLi">
+                <a class="btn_logout dropdown-item" href="/user/logout_process">      
+                  <i class="fa-solid fa-right-from-bracket me-1"></i>
+                  <span>Logout</span>
+                </a>
+              </li>
+              <li class="myPageLi">               
+                <a class="dropdown-item" href="/user/myPage">
+                  <i class="fa-solid fa-user-gear me-1"></i>
+                  <span>My Page</span>
+                </a>             
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <script src="/js/back/navbarStateUI.js"></script> 
+
+
+  <!-- 모바일의 Main -->
+  <section id="mobile-home" class="position-relative d-block d-lg-none">
+    <div class="section-content overlay d-flex justify-content-center align-items-center">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-12 welcome mt-5 pt-5">            
+            <h1 class="welcome-title display-1 text-center pt-3 mt-3">Welcome!</h1>
+            <p class="our-title text-white text-center">Find food</p>
+            <hr class="divider-main">
+            <div class="row text-center">
+              <p class="col-10 offset-1 lead fs-4 itro" id="title-explain">반갑습니다! 오늘의 점심 메뉴도, 저녁 메뉴도 어떤 것을 먹어야 할지 고민에 빠지셨나요? 주저하지말고 찾고, 돌리고, 선택하세요!</p>              
+            </div>
+            <div class="d-flex justify-content-center">
+              <a href="/page/intro" class="btn btn-outline-light wow fadeInLeft" data-wow-delay="0.6s">도움말</a>
+              <a href="#carousel-front-slides" class="btn btn-outline-light wow fadeInLeft mx-2" data-wow-delay="0.9s">음식 추천</a>                 
+              <a href="/page/foods" class="btn btn-outline-light  wow fadeInLeft" data-wow-delay="1.2s">돌림판</a>                 
+            </div>
+          </div>         
+        </div>
+      </div>
+    </div>
+  </section> 
+
+
+
+  <!-- pc의 main-->
+  <main id="main-home" class="d-lg-block d-none">
+    <div class="cursor"></div>
+    <div class="mouseCont row align-items-center">
+      <div class="col-lg-8 animate__backInDown">
+        <p class="display-1 welcome-title animate__animated animate__flipInX">Welcome! <span class="our-title text-white">Find food</span></p>
+        <p class="fs-2">반갑습니다! 오늘의 점심 메뉴도, 저녁 메뉴도 어떤 것을 먹어야 할지 고민에 빠지셨나요? 주저하지말고 찾고, 돌리고, 선택하세요!</p>
+        <br>
+        <div class="row">
+        <div class="animate__animated animate__bounceIn animate__delay-1s">
+          <a href="/page/intro" class="btn btn-success border border-2 fs-5 w-25">
+            <i class="fa-solid fa-circle-info pe-1"></i>
+            <span>더 알고 싶어요!</span>
+          </a>
+        </div>
+        <div class="py-lg-3 animate__animated animate__bounceIn animate__delay-2s">
+          <a href="#carousel-front-slides" class="btn btn-warning border border-2 fs-5 w-25">
+            <i class="fa-solid fa-burger pe-1"></i>
+            <span>음식을 추천해주세요!</span>
+          </a>
+        </div>
+        <div class="animate__animated animate__bounceIn animate__delay-3s">
+          <a href="/page/foods" class="btn btn-primary border border-2 fs-5 w-25">
+            <i class="fa-solid fa-arrow-rotate-right pe-1"></i>
+            <span>돌림판으로 결정할래요!</span>
+          </a>
+        </div>
+        </div>     
+      </div>   
+    </div> 
+  </main>
+
+
+
+  <!-- slide - 백그라운드 사진 있는 버전 -->
+  <!-- 모바일에서는 사진 하나만 할성화 된다.-->
+  <section id="recommend-section">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-center">
+        <div id="carousel-front-slides" class="carousel slide wow fadeInUp col-lg-6 offset-lg-1" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel-front-slides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel-front-slides" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel-front-slides" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="d-flex justify-content-center">
+                <img id="ranFood1-out" src="" class="d-block outer-slide w-75 py-lg-5 ran1"  height="650" alt="first food">
+              </div>
+              <div class="carousel-caption justify-content-center d-flex">
+                <a id="ranFood1-link" href="/page/foods" target="_blank">       
+                  <figure>
+                    <img id="ranFood1-in" src="" alt="first slide" class="d-none d-lg-block shadow-sm inner-slide ran1">
+                  </figure>         
+                  <div class="carousel-caption wow fadeInDown" data-wow-delay="0.9s">
+                    <span class="display-3 rounded-pill foodName ran1name"></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img id="ranFood2-out" src="" class="d-block outer-slide w-75 py-lg-5 ran2" width="1100" height="650" alt="second food">
+              </div>
+              <div class="carousel-caption justify-content-center d-flex">
+                <a id="ranFood2-link" href="/page/foods" target="_blank">
+                  <figure>
+                    <img id="ranFood2-in" src="" alt="second slide" class="d-none d-lg-block shadow-sm inner-slide ran2">
+                  </figure>
+                  <div class="carousel-caption animate__animated animate__backInUp">
+                    <span class="display-3 rounded-pill foodName ran2name"></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="d-flex justify-content-center">
+                <img id="ranFood3-out" src="" class="d-block outer-slide w-75 py-lg-5 ran3" width="1100" height="650" alt="third food">
+              </div>
+              <div class="carousel-caption justify-content-center d-flex">
+                <a id="ranFood3-link" href="/page/foods" target="_blank">
+                  <figure>
+                    <img id="ranFood3-in" src="" alt="third slide" class="d-none d-lg-block shadow-sm inner-slide ran3">
+                  </figure>               
+                  <div class="carousel-caption animate__animated animate__backInUp">
+                    <span class="display-3 rounded-pill foodName ran3name"></span>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-front-slides" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon arrows" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-front-slides" data-bs-slide="next">
+            <span class="carousel-control-next-icon arrows" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="col-lg-5">
+          <!-- 작은 폭으로 8개의 칼럼을 만들고 왼쪽의 오프셋으로 2개의 여백을 만들고 텍스트 중앙정렬, 마진바텀을 설정-->
+          <div class="col-lg-6 text-center wow fadeInUp " data-wow-delay="0s">
+            <h2 class="mt-lg-0 mt-3">오늘의 랜덤 추천 메뉴</h2>
+            <div class="divider">
+              <i class="fa-solid fa-cog fa-spin fa-3x"></i>
+            </div>
+            <p class="lead text-center mb-1 mb-lg-3">
+              <span id="getNow" class="font_poor-story fs-5"></span>
+              <br>
+              <br>
+              <span><span class="our-title small">Find Food</span>는 다양한 알고리즘을 바탕으로 여러분들에게 최상의 추천 메뉴를 제공하고 있습니다. 여러분의 입맛 취향에 맞춰 다양한 음식을 보고, 찾고, 맛보세요!</span>
+              <p class="mt-2 mt-lg-5 fst-italic">왼쪽에 제공되는 3가지 랜덤 음식들은, Find Food의 Foods 페이지에 있는 전체 음식을 바탕으로 제공되고 있습니다. 더 다양한 음식들을 구경하고 싶으시면 Foods 페이지로 이동해주세요!</p>
+            </p>
+          </div>
+        </div>
+      </div>     
+    </div>
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer id="footer"> 
+  </footer> 
+
+
+          
+  <!-- booststrap 링크-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
+  <!-- light box2_cdnjs 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js" integrity="sha512-6gudNVbNM/cVsLUMOb8g2b/RBqtQJ3aDfRFgU+5paeaCTtbYY/Dg00MzZq7r6RvJGI2KKtPBhjkHGTL/iOe21A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> 
+  <!-- 애니메이션 다양한 효과 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- followCursorStyle cdn 링크-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>  
+  <!-- 푸터 react -->
+  <script src="js/reactComponents/footer.jsx" type="text/babel"></script>
+  <!-- custom js 링크-->
+  <script type="module" src="js/main.js"></script>  
+</body>
+</html>
